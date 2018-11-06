@@ -1,0 +1,160 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>我的随笔 - 博客后台 - 博客园</title>
+    <link rel="stylesheet" href="https://common.cnblogs.com/css/bootstrap.min.css">
+    <link href="https://i.cnblogs.com/bundles/admin-new.css?v=Ye9IYl3rG1TPa1mMw-tr9jlbN_BMEt9-1G3QChTzFC01"
+          rel="stylesheet">
+
+
+    <script src="https://common.cnblogs.com/script/jquery.js"></script>
+    <script src="https://i.cnblogs.com/bundles/admin-new.js?v=-UoaO6XJNuRzE_fp9DxVQ5Pa4UJX72Q48iDmzfFFffk1"></script>
+
+
+</head>
+<body>
+<div id="top_nav">
+    <div id="left">
+        « <a href="http://www.cnblogs.com">网站首页</a><a href="http://home.cnblogs.com/">园子</a><a
+            href="http://news.cnblogs.com/">新闻</a><a href="//q.cnblogs.com/">博问</a><a href="//ing.cnblogs.com/">闪存</a><a
+            href="http://wz.cnblogs.com/">收藏</a><a href="http://zzk.cnblogs.com/my?app=Blogpost">搜索</a>
+    </div>
+    <div id="right"><a href="http://home.cnblogs.com/u/zhanyifan/">爬树的猪</a>·<a id="user_nav_blog_link"
+                                                                               href="https://www.cnblogs.com/zhanyifan/">我的博客</a><span
+            id="user_nav_blog_split">·</span><a href="https://msg.cnblogs.com/">短消息<span id="msg_count"></span></a>·<a
+            href="https://home.cnblogs.com/set/">设置</a>·<a href="#" onclick="logout();return false">退出</a><span
+            id="current_spaceId" style="display:none">1412721</span></div>
+    <div class="clear"></div>
+</div>
+<div id="main">
+    <div id="main_nav"><a href="http://home.cnblogs.com/set/" target="_blank">修改密码</a>|<a href="BlogBackup.aspx">备份</a>|<a
+            href="http://www.cnblogs.com/Skins.aspx" target="_blank">模板</a></div>
+    <div id="main_head">
+        <div id="blog_title"><a href="http://www.cnblogs.com/zhanyifan/"
+                                th:href="@{http://localhost:8080/blog/{username}(username=${session.loginUser.username})}"
+                                th:text="${session.loginUser.username}">爬树的猪</a></div>
+        <div id="SiteTitle"><a href="http://www.cnblogs.com/"><img alt="logo" src="https://static.cnblogs.com/images/adminlogo.gif"></a></div>
+    </div>
+    <div class="clear"></div>
+    <div id="main_body">
+        <div id="main_wrap">
+            <div id="main_container">
+                <div id="tab_nav">
+                    <ul>
+                        <li><a id="TabPosts" href="/posts" class="current_nav">随笔</a></li>
+                        <li><a id="TabArticles" href="/EditArticles.aspx">文章</a></li>
+                        <li><a id="TabDiary" href="/EditDiary.aspx">日记</a></li>
+                        <li><a id="TabFeedback" href="/Feedback.aspx">评论</a></li>
+
+                        <li><a id="TabLinks" href="/EditLinks.aspx">链接</a></li>
+                        <li><a id="TabFavorites" href="/EditFavorite.aspx">收藏</a></li>
+                        <li><a id="TabGalleries" href="/EditGalleries.aspx">相册</a></li>
+                        <li><a id="TabFiles" href="/Files.aspx">文件</a></li>
+                        <li><a id="TabConfigure" href="/Configure.aspx">设置</a></li>
+                        <li><a id="TabPreferences" href="/Preferences.aspx">选项</a></li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <div id="sub_nav">
+
+
+                    &nbsp;
+                </div>
+                <div id="content_area">
+                    <div id="post_list">
+                        <table cellspacing="0" cellpadding="0" border="0">
+                            <tbody>
+                            <tr>
+                                <th class="post-title">标题</th>
+                                <th class="publish-status">发布状态</th>
+                                <th>评论数</th>
+                                <th>阅读数</th>
+                                <th>操作</th>
+                                <th>操作</th>
+                            </tr>
+                            <tr id="post-row-9756932" th:each="article : ${articles}">
+                                <td class="post-title">
+                                    <a id="post_title_link_9756932"
+                                       th:href="@{http://localhost:8080/{username}/p/{uuid}(username=${session.loginUser.username},uuid=${article.url})}"
+                                       href="//www.cnblogs.com/zhanyifan/p/9756932.html"
+                                       th:text="${article.articleTitle}">
+                                        浅读truechain混合共识和双链结构
+                                    </a>
+                                    [[${#dates.format(article.articleTime,'yyyy-MM-dd HH:mm')}]]
+                                    <!--（2018-10-08 20:26）-->
+                                </td>
+                                <td>发布</td>
+                                <td>[[${article.commentCount}]]</td>
+                                <td>[[${article.readCount}]]</td>
+                                <td><a href="/EditPosts?postid=9756932&amp;update=1" th:href="@{/EditPost(postid=${article.url})}">编辑</a></td>
+
+                                <td>
+                                    <a th:onclick="'return deleteArticle(\''+${article.url}+'\')'" href="javascript:void(0)">
+                                        删除
+                                    </a>
+                                    <!--<a onclick="return deletePost(9756932)" href="javascript:void(0)" >-->
+                                        <!--删除-->
+                                    <!--</a>-->
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div id="left_container">
+            <div id="left_nav">
+                <h2>操作</h2>
+                <ul>
+                    <li><a href="/EditPost?opt=1">添加新随笔</a></li>
+                </ul>
+            </div>
+            <div id="sidebar_categories">
+                <h2>分类</h2>
+                <ul id="post_categories">
+                    <li>
+                        <a href="/EditCategories.aspx?catid=1">[编辑分类]</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+</div>
+<div id="footer">
+    <a href="http://www.cnblogs.com/ContactUs.aspx">联系我们</a><a href="http://group.cnblogs.com/forum/public/">反馈问题</a>©2018<a
+        href="http://www.cnblogs.com">博客园</a>/ 代码改变世界
+</div>
+
+
+</body>
+<script type="text/javascript">
+
+    function deleteArticle(postid){
+        var is=window.confirm("确认删除？");
+        if(is==true){
+            $.ajax({
+                type:"POST",
+                url:"http://localhost:8080/deleteArticle?_method=DELETE",
+                data:{
+                    "postid":postid
+                },
+                success:function(data){
+                    alert(data);
+                    window.location.href="http://localhost:8080/manage"
+                },
+                error:function(){
+                    alert("删除失败")
+                }
+            });
+        }
+       return is;
+    }
+</script>
+
+</html>

@@ -1,0 +1,131 @@
+<html lang="zh-cn" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="origin">
+    <title>[[${loginUser.username}]]- 博客园</title>
+    <link type="text/css" rel="stylesheet"
+          href="http://www.cnblogs.com/bundles/blog-common.css?v=-duj5vpGTntb85GJoM3iRI972XwWcI-j8zmqDzyfu2w1">
+    <link id="MainCss" type="text/css" rel="stylesheet"
+          href="http://www.cnblogs.com/skins/CodingLife/bundle-CodingLife.css?v=g4Oce5UBaUn_FUwadcT09ICEg5NkULQGtUpNhTtrI8U1">
+    <link type="text/css" rel="stylesheet"
+          href="http://www.cnblogs.com/blog/customcss/466606.css?v=xVFIBMhJRM%2foyTgjMF8wsObACJ8%3d">
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet"
+          href="http://www.cnblogs.com/skins/CodingLife/bundle-CodingLife-mobile.css?v=Xay8b9tTSw814nBzbOgvS6rrbcxrobMhvHJHdZAO9vI1">
+    <link title="RSS" type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/cheng18/rss">
+    <link title="RSD" type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/cheng18/rsd.xml">
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/cheng18/wlwmanifest.xml">
+    <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <script src="http://common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+    <link rel="stylesheet" th:href="@{/editormd/css/editormd.min.css}"
+          href="/editormd/css/editormd.min.css"/>
+    <script type="text/javascript">
+        var currentBlogApp = 'cheng18', cb_enable_mathjax = false;
+        var isLogined = false;
+    </script>
+    <script src="http://www.cnblogs.com/bundles/blog-common.js?v=93E4BY8zFdnh3jDab2GTlgLeDcUJN7mm8kJmYz6dndo1" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+    <!--引入header-->
+    <div th:replace="commons/common1::header"></div>
+
+    <div id="main">
+        <div id="mainContent">
+            <div class="forFlow">
+                <!--done-->
+                <div id="post_detail">
+                    <!--done-->
+                    <div id="topics">
+                        <div class="post">
+                            <h1 class="postTitle">
+                                <a id="cb_post_title_url" class="postTitle2" href="https://www.cnblogs.com/cheng18/p/9779584.html">[[${article.articleTitle}]]</a>
+                            </h1>
+                            <div class="clear"></div>
+                            <div class="postBody">
+                                <div class="markdown-body editormd-preview-container" previewcontainer="true" style="padding: 20px;" th:utext="${article.articleContent}">
+
+                                </div>
+                                <div id="MySignature"></div>
+                                <div class="clear"></div>
+                                <div id="blog_post_info_block">
+                                    <div id="BlogPostCategory">分类: <a href="https://www.cnblogs.com/cheng18/category/1316608.html" target="_blank">Java入门</a></div>
+                                    <div id="EntryTag"></div>
+                                    <div id="blog_post_info"><div id="green_channel">
+                                        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(9779584,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+                                        <a id="green_channel_follow" onclick="follow('d4647e60-b987-4c2b-8084-08d62e2ab8e3');" href="javascript:void(0);">关注我</a>
+                                        <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+                                        <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="//common.cnblogs.com/images/icon_weibo_24.png" alt=""></a>
+                                        <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="//common.cnblogs.com/images/wechat.png" alt=""></a>
+                                    </div>
+                                        <div id="author_profile">
+                                            <div id="author_profile_info" class="author_profile_info">
+                                                <a href="http://home.cnblogs.com/u/cheng18/" target="_blank"><img src="//pic.cnblogs.com/face/sample_face.gif" class="author_avatar" alt=""></a>
+                                                <div id="author_profile_detail" class="author_profile_info">
+                                                    <a href="http://home.cnblogs.com/u/cheng18/">cheng_18</a><br>
+                                                    <a href="http://home.cnblogs.com/u/cheng18/followees">关注 - 0</a><br>
+                                                    <a href="http://home.cnblogs.com/u/cheng18/followers">粉丝 - 0</a>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div id="author_profile_honor"></div>
+                                            <div id="author_profile_follow">
+                                                <a href="javascript:void(0);" onclick="follow('d4647e60-b987-4c2b-8084-08d62e2ab8e3');return false;">+加关注</a>
+                                            </div>
+                                        </div>
+                                        <div id="div_digg">
+                                            <div class="diggit" onclick="votePost(9779584,'Digg')">
+                                                <span class="diggnum" id="digg_count">0</span>
+                                            </div>
+                                            <div class="buryit" onclick="votePost(9779584,'Bury')">
+                                                <span class="burynum" id="bury_count">0</span>
+                                            </div>
+                                            <div class="clear"></div>
+                                            <div class="diggword" id="digg_tips">
+                                            </div>
+                                        </div>
+                                        <script type="text/javascript">
+                                            currentDiggType = 0;
+                                        </script></div>
+                                    <div class="clear"></div>
+                                    <div id="post_next_prev">
+                                        <a href="https://www.cnblogs.com/cheng18/p/9776796.html" class="p_n_p_prefix">
+                                            « </a> 上一篇：<a href="https://www.cnblogs.com/cheng18/p/9776796.html" title="发布于2018-10-12 10:43" th:if="${lastArticle} != null" th:text="${lastArticle.articleTitle}">volatile学习</a><br>
+                                        <a href="https://www.cnblogs.com/cheng18/p/9796504.html" class="p_n_p_prefix">
+                                            » </a>下一篇：<a href="https://www.cnblogs.com/cheng18/p/9796504.html" title="发布于2018-10-16 10:27" th:if="${nextArticle} !=null" th:text="${nextArticle.articleTitle}">( Leetcode 11 ).  盛最多水的容器</a><br>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="postDesc">posted @ <span id="post-date">2018-10-12 17:49</span> <a href="https://www.cnblogs.com/cheng18/">cheng_18</a> 阅读(<span id="post_view_count">21</span>) 评论(<span id="post_comment_count">0</span>)  <a href="https://i.cnblogs.com/EditPosts.aspx?postid=9779584" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(9779584);return false;">收藏</a></div>
+                        </div>
+                        <script type="text/javascript">var allowComments=true,cb_blogId=466606,cb_entryId=9779584,cb_blogApp=currentBlogApp,cb_blogUserGuid='d4647e60-b987-4c2b-8084-08d62e2ab8e3',cb_entryCreatedDate='2018/10/12 17:49:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+
+                    </div><!--end: topics 文章、评论容器-->
+                </div>
+            </div>
+
+            <div class="topicListFooter"></div>
+
+
+        </div><!--end: forFlow -->
+    </div><!--end: mainContent 主体内容容器-->
+    <!--引入sidebar-->
+    <div th:replace="commons/common1::sideBar"></div>
+    <div class="clear"></div>
+</div><!--end: main -->
+<div class="clear"></div>
+<div id="footer">
+
+    <!--done-->
+    Copyright ©2018 cheng_18
+</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+</body>
+</html>

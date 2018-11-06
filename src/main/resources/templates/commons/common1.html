@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>$Title$</title>
+</head>
+<body>
+<div id="header" th:fragment="header">
+    <div id="blogTitle" >
+        <a id="lnkBlogLogo" href="https://www.cnblogs.com/cheng18/">
+            <img id="blogLogo" src="http://www.cnblogs.com/Skins/custom/images/logo.gif" alt="返回主页"></a>
+        <!--done-->
+        <h1><a id="Header1_HeaderTitle" class="headermaintitle" th:href="@{http://localhost:8080/blog/{username}(username=${loginUser.username})}" href="https://www.cnblogs.com/cheng18/" th:text="${loginUser.username}">cheng_18</a>
+        </h1>
+        <h2></h2>
+    </div><!--end: blogTitle 博客的标题和副标题 -->
+    <div id="navigator">
+
+        <ul id="navList">
+            <li><a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/cheng18/" th:href="@{http://localhost:8080/blog/{username}(username=${loginUser.username})}">首页</a></li>
+            <li><a id="blog_nav_newpost" class="menu" rel="nofollow"
+                   th:href="@{http://localhost:8080/EditPost(opt=1)}"
+                   href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+            <li><a id="blog_nav_admin" class="menu" rel="nofollow" href="/manage">管理</a></li>
+        </ul>
+        <div class="blogStats">
+            <div id="blog_stats">
+                <span id="stats_post_count">随笔 - 3&nbsp; </span>
+                <span id="stats_article_count">文章 - 0&nbsp; </span>
+                <span id="stats-comment_count">评论 - 0</span>
+            </div>
+        </div><!--end: blogStats -->
+    </div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="sideBar" th:fragment="sideBar">
+    <div id="sideBarMain">
+
+        <!--done-->
+        <div class="newsItem">
+            <h3 class="catListTitle">公告</h3>
+            <div id="blog-news">
+                <div id="profile_block">昵称：
+                    <a href="https://home.cnblogs.com/u/cheng18/" th:text="${loginUser.username}">cheng_18</a><br>
+                    园龄：<a href="https://home.cnblogs.com/u/cheng18/" title="入园时间：2018-10-10" th:text="${loginUser.age}">12天</a><br>
+                    粉丝：<a href="https://home.cnblogs.com/u/cheng18/followers/" th:text="${loginUser.fans}">0</a><br>
+                    关注：<a href="https://home.cnblogs.com/u/cheng18/followees/" th:text="${loginUser.order_}">0</a>
+                    <div id="p_b_follow"><a href="javascript:void(0);"
+                                            onclick="follow('d4647e60-b987-4c2b-8084-08d62e2ab8e3')">+加关注</a>
+                    </div>
+                    <script>getFollowStatus('d4647e60-b987-4c2b-8084-08d62e2ab8e3')</script>
+                </div>
+            </div>
+            <script type="text/javascript">loadBlogNews();</script>
+        </div>
+        <div id="blog-calendar" style="">
+            <table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar">
+                <tbody>
+                <tr>
+                    <td colspan="7">
+                        <table class="CalTitle" cellspacing="0">
+                            <tbody>
+                            <tr>
+                                <td class="CalNextPrev"><a href="javascript:void(0);"
+                                                           onclick="loadBlogCalendar('2018/09/01');return false;">&lt;</a>
+                                </td>
+                                <td align="center">2018年10月</td>
+                                <td class="CalNextPrev" align="right"><a href="javascript:void(0);"
+                                                                         onclick="loadBlogCalendar('2018/11/01');return false;">&gt;</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <th class="CalDayHeader" align="center" abbr="日" scope="col">日</th>
+                    <th class="CalDayHeader" align="center" abbr="一" scope="col">一</th>
+                    <th class="CalDayHeader" align="center" abbr="二" scope="col">二</th>
+                    <th class="CalDayHeader" align="center" abbr="三" scope="col">三</th>
+                    <th class="CalDayHeader" align="center" abbr="四" scope="col">四</th>
+                    <th class="CalDayHeader" align="center" abbr="五" scope="col">五</th>
+                    <th class="CalDayHeader" align="center" abbr="六" scope="col">六</th>
+                </tr>
+                <tr>
+                    <td class="CalOtherMonthDay" align="center">30</td>
+                    <td align="center">1</td>
+                    <td align="center">2</td>
+                    <td align="center">3</td>
+                    <td align="center">4</td>
+                    <td align="center">5</td>
+                    <td class="CalWeekendDay" align="center">6</td>
+                </tr>
+                <tr>
+                    <td class="CalWeekendDay" align="center">7</td>
+                    <td align="center">8</td>
+                    <td align="center">9</td>
+                    <td align="center">10</td>
+                    <td align="center">11</td>
+                    <td align="center"><a
+                            href="https://www.cnblogs.com/cheng18/archive/2018/10/12.html"><u>12</u></a></td>
+                    <td class="CalWeekendDay" align="center">13</td>
+                </tr>
+                <tr>
+                    <td class="CalWeekendDay" align="center">14</td>
+                    <td align="center">15</td>
+                    <td align="center"><a
+                            href="https://www.cnblogs.com/cheng18/archive/2018/10/16.html"><u>16</u></a></td>
+                    <td align="center">17</td>
+                    <td align="center">18</td>
+                    <td align="center">19</td>
+                    <td class="CalWeekendDay" align="center">20</td>
+                </tr>
+                <tr>
+                    <td class="CalWeekendDay" align="center">21</td>
+                    <td class="CalTodayDay" align="center"><a
+                            href="https://www.cnblogs.com/cheng18/archive/2018/10/22.html"><u>22</u></a></td>
+                    <td align="center">23</td>
+                    <td align="center">24</td>
+                    <td align="center">25</td>
+                    <td align="center">26</td>
+                    <td class="CalWeekendDay" align="center">27</td>
+                </tr>
+                <tr>
+                    <td class="CalWeekendDay" align="center">28</td>
+                    <td align="center">29</td>
+                    <td align="center">30</td>
+                    <td align="center">31</td>
+                    <td class="CalOtherMonthDay" align="center">1</td>
+                    <td class="CalOtherMonthDay" align="center">2</td>
+                    <td class="CalOtherMonthDay" align="center">3</td>
+                </tr>
+                <tr>
+                    <td class="CalOtherMonthDay" align="center">4</td>
+                    <td class="CalOtherMonthDay" align="center">5</td>
+                    <td class="CalOtherMonthDay" align="center">6</td>
+                    <td class="CalOtherMonthDay" align="center">7</td>
+                    <td class="CalOtherMonthDay" align="center">8</td>
+                    <td class="CalOtherMonthDay" align="center">9</td>
+                    <td class="CalOtherMonthDay" align="center">10</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <script type="text/javascript">loadBlogDefaultCalendar();</script>
+
+        <div id="leftcontentcontainer">
+            <div id="blog-sidecolumn">
+                <div id="sidebar_search" class="sidebar-block">
+                    <div id="sidebar_search" class="mySearch">
+                        <h3 class="catListTitle">搜索</h3>
+                        <div id="sidebar_search_box">
+                            <div id="widget_my_zzk" class="div_my_zzk"><input type="text" id="q"
+                                                                              onkeydown="return zzk_go_enter(event);"
+                                                                              class="input_my_zzk">&nbsp;<input
+                                    onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk">
+                            </div>
+                            <div id="widget_my_google" class="div_my_zzk"><input type="text" name="google_q"
+                                                                                 id="google_q"
+                                                                                 onkeydown="return google_go_enter(event)"
+                                                                                 class="input_my_zzk">&nbsp;<input
+                                    onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk"></div>
+                        </div>
+                    </div>
+
+                </div>
+                <div id="sidebar_shortcut" class="sidebar-block">
+                    <div class="catListLink">
+                        <h3 class="catListTitle">常用链接</h3>
+                        <ul>
+                            <li><a href="https://www.cnblogs.com/cheng18/p/" title="我的博客的随笔列表">我的随笔</a></li>
+                            <li><a href="https://www.cnblogs.com/cheng18/MyComments.html"
+                                   title="我发表过的评论列表">我的评论</a></li>
+                            <li><a href="https://www.cnblogs.com/cheng18/OtherPosts.html"
+                                   title="我评论过的随笔列表">我的参与</a></li>
+                            <li><a href="https://www.cnblogs.com/cheng18/RecentComments.html" title="我的博客的评论列表">最新评论</a>
+                            </li>
+                            <li><a href="https://www.cnblogs.com/cheng18/tag/" title="我的博客的标签列表">我的标签</a></li>
+                        </ul>
+                        <div id="itemListLin_con" style="display:none;">
+                            <ul>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="sidebar_toptags" class="sidebar-block"></div>
+                <div id="sidebar_categories">
+                    <div id="sidebar_postcategory" class="catListPostCategory sidebar-block">
+                        <h3 class="catListTitle">随笔分类</h3>
+
+                        <ul>
+
+                            <li><a id="CatList_LinkList_0_Link_0"
+                                   href="https://www.cnblogs.com/cheng18/category/1316608.html">Java入门(2)</a>
+                            </li>
+
+                            <li><a id="CatList_LinkList_0_Link_1"
+                                   href="https://www.cnblogs.com/cheng18/category/1320255.html">算法(2)</a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <div id="sidebar_postarchive" class="catListPostArchive sidebar-block">
+                        <h3 class="catListTitle">随笔档案</h3>
+
+                        <ul>
+
+                            <li><a id="CatList_LinkList_1_Link_0"
+                                   href="https://www.cnblogs.com/cheng18/archive/2018/10.html">2018年10月 (4)</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+                <div id="sidebar_recentcomments" class="sidebar-block">
+                    <div id="recent_comments_wrap" style="display: none;">
+                        <div class="catListComment">
+                            <h3 class="catListTitle">最新评论</h3>
+
+                            <div id="RecentCommentsBlock"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sidebar_topviewedposts" class="sidebar-block">
+                    <div id="topview_posts_wrap">
+                        <div class="catListView">
+                            <h3 class="catListTitle">阅读排行榜</h3>
+                            <div id="TopViewPostsBlock">
+                                <ul>
+                                    <li><a href="https://www.cnblogs.com/cheng18/p/9779584.html">1.
+                                        synchronized学习（一）： synchronized的执行过程(15)</a></li>
+                                    <li><a href="https://www.cnblogs.com/cheng18/p/9776796.html">2.
+                                        volatile学习(10)</a></li>
+                                    <li><a href="https://www.cnblogs.com/cheng18/p/9796504.html">3. ( Leetcode
+                                        11 ). 盛最多水的容器(7)</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sidebar_topcommentedposts" class="sidebar-block">
+                    <div id="topfeedback_posts_wrap" style="display: none;">
+                        <div class="catListFeedback">
+                            <h3 class="catListTitle">评论排行榜</h3>
+                            <div id="TopFeedbackPostsBlock"></div>
+                        </div>
+                    </div>
+                </div>
+                <div id="sidebar_topdiggedposts" class="sidebar-block">
+                    <div id="topdigg_posts_wrap" style="display: none;">
+                        <div class="catListView">
+                            <h3 class="catListTitle">推荐排行榜</h3>
+                            <div id="TopDiggPostsBlock"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">loadBlogSideColumn();</script>
+        </div>
+
+    </div><!--end: sideBarMain -->
+</div><!--end: sideBar 侧边栏容器 -->
+
+
+
+<td id="Header" th:fragment="Header" colspan="2"><div id="SiteNav"><a href="http://home.cnblogs.com/set/account/" target="_blank">修改密码</a>&nbsp;|&nbsp;<a href="BlogBackup.aspx">备份</a>&nbsp;|&nbsp;<a href="http://www.cnblogs.com/Skins.aspx" target="_blank">模板</a></div>
+    <div id="BlogTitle"><a id="BlogTitleLink" href="https://www.cnblogs.com/zhanyifan/">爬树的猪</a>
+    </div>
+    <div id="SiteTitle">
+        <a id="TitleLink" href="https://www.cnblogs.com/"><img src="https://static.cnblogs.com/images/adminlogo.gif" alt=""></a>
+    </div>
+</td>
+
+<td class="NavLeftCell" th:fragment="NavLeftCell">
+    <div class="left_nav">
+        <ul id="LinksActions"><li><a href="EditPost?opt=1">&raquo; 添加新随笔</a></li><li><a href="/EditPosts.aspx?IsDraft=1">&raquo; 草稿箱</a></li><li><a href="Preferences.aspx#Editor">&raquo; 设置默认编辑器</a></li><li><a href="http://home.cnblogs.com/group/topic/8550.html" target="_blank">&raquo; 博客客户端</a></li><li><a href="ManageSignature.aspx" target="_blank">&raquo; 博客签名</a></li><li><a href="BlogBackup.aspx?type=1">&raquo; 博客备份</a></li><li><a href="Import.aspx?catid=1">&raquo; 博客搬家</a></li></ul>
+    </div>
+    <div id="CategoriesHeader" class="LeftNavHeader">
+        分类
+    </div>
+    <div class="left_nav">
+        <ul id="LinksCategories"><li><a href="EditCategories.aspx?catid=1">[编辑分类]</a></li><li><a href="/EditPosts.aspx">[所有分类]</a></li><li><a href="/EditPosts.aspx?catid=-2">[未分类]</a></li><li><a href="/EditPosts.aspx?catid=1313161">Data Structure and Algorithm(2)</a></li><li><a href="/EditPosts.aspx?catid=1314840">truechain(1)</a></li></ul>
+    </div>
+</td>
+</body>
+</html>
