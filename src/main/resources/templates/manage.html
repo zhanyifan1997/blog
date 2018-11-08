@@ -33,7 +33,11 @@
         <div id="blog_title"><a href="http://www.cnblogs.com/zhanyifan/"
                                 th:href="@{http://localhost:8080/blog/{username}(username=${session.loginUser.username})}"
                                 th:text="${session.loginUser.username}">爬树的猪</a></div>
-        <div id="SiteTitle"><a href="http://www.cnblogs.com/"><img alt="logo" src="https://static.cnblogs.com/images/adminlogo.gif"></a></div>
+        <div id="SiteTitle">
+            <a href="http://www.cnblogs.com/">
+                <img alt="logo" th:src="@{/img/adminlogo.png}" src="https://static.cnblogs.com/images/adminlogo.gif">
+            </a>
+        </div>
     </div>
     <div class="clear"></div>
     <div id="main_body">

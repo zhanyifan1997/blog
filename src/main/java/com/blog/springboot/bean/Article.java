@@ -2,6 +2,9 @@ package com.blog.springboot.bean;
 
 import java.util.Date;
 
+/**
+ * create a  Article javabean to mapping the db table
+ */
 public class Article {
     private Integer articleId;
     private User user;

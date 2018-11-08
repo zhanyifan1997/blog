@@ -1,5 +1,8 @@
 package com.blog.springboot.bean;
 
+/**
+ * create a user javabean to mapping the db table
+ */
 
 public class User {
     private Integer id;

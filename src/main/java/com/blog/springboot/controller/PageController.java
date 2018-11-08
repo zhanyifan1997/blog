@@ -17,6 +17,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author 詹奕凡
+ */
 @Controller
 public class PageController {
     @Autowired
@@ -24,6 +27,14 @@ public class PageController {
     @Autowired
     private ArticleService articleService;
 
+    /**
+     * 处理查看文章的请求
+     * @param username 从路径变量中获取查看的用户
+     * @param uuid 从路径变量中获取查看文章的uuid(唯一)
+     * @param request
+     * @param model
+     * @return
+     */
     @RequestMapping("/{username}/p/{uuid}")
     public String readArticle(@PathVariable String username,@PathVariable String uuid, HttpServletRequest request,Model model){
         User user=userService.getUserByName(username);
@@ -41,6 +52,13 @@ public class PageController {
         }
         return "404";
     }
+
+    /**
+     * 处理跳转到添加随笔(更改随笔)的页面
+     * @param request
+     * @param model
+     * @return
+     */
     @GetMapping("/EditPost")
     public String EditPost(HttpServletRequest request, Model model){
         String opt = request.getParameter("opt");
@@ -62,6 +80,14 @@ public class PageController {
         }
         return "";
     }
+
+    /**
+     * 接收新增随笔(修改随笔的请求)
+     * @param map 接收前端用ajax发来的json串
+     * @param session
+     * @param model
+     * @return
+     */
     @PostMapping("/EditPost")
     @ResponseBody
     public Map<String,String> EditPost(@RequestParam Map<String,String> map, HttpSession session,Model model){
@@ -90,11 +116,17 @@ public class PageController {
             article.setArticleContent(articleContent);
             articleService.changeArticle(article);
         }
-        Map json=new HashMap();
+        Map json=new HashMap(0);
         json.put("href","success");
         json.put("postid",postid);
         return json;
     }
+
+    /**
+     * 处理删除随笔的请求
+     * @param map 接收前端发送的ajax的json串
+     * @return 返回一段消息，用于前端提醒
+     */
     @DeleteMapping("/deleteArticle")
     @ResponseBody
     public String deleteArticle(@RequestParam Map<String,String> map){

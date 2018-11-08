@@ -10,8 +10,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author 詹奕凡
+ * 对article进行操作的service类
+ */
 @Service
 public class ArticleService {
+    /**
+     * 自动注入dao对象
+     */
     @Autowired
     ArticleDao articleDao;
     public List<Article> getArticleByUser(User user){
