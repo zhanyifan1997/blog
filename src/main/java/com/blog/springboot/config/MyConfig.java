@@ -25,6 +25,8 @@ public class MyConfig extends WebMvcConfigurerAdapter {
         registry.addViewController("/simple.html").setViewName("simple");
         registry.addViewController("/show.html").setViewName("show");
         registry.addViewController("/success.html").setViewName("success");
+        registry.addViewController("/register.html").setViewName("register");
+        registry.addViewController("/register_success.html").setViewName("register_success");
     }
     /**
      * 注册国际化组件
@@ -40,7 +42,8 @@ public class MyConfig extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry) {
         //拦截所有请求，除了excludePatterns中的那些url
         registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").
-                excludePathPatterns("/index.html","/","/user/signin","/blog/*","/*/p/*");
+                excludePathPatterns("/index.html","/","/user/signin","/blog/*","/*/p/*",
+                        "/register.html","/user/register");
     }
 
 }

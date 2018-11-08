@@ -1,6 +1,7 @@
 package com.blog.springboot.dao;
 
 import com.blog.springboot.bean.User;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -30,5 +31,12 @@ public interface UserDao {
      * @param id
      */
     User getUserById(String id);
+
+    /**
+     * insert a user into db
+     * @param user
+     */
+    @Insert("insert into user_(username,password) values(#{username},#{password})")
+    void registerUser(User user);
 
 }

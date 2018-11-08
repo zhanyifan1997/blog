@@ -19,4 +19,7 @@ public class UserService {
         user=dao.checkUser(user);
         return user;
     }
+    public void registerUser(User user){
+        dao.registerUser(user);
+    }
 }

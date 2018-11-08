@@ -1,10 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Signin Template for Bootstrap</title>
+    <!-- Bootstrap core CSS -->
+    <link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}"  rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="asserts/css/signin.css" th:href="@{/css/signin.css}" rel="stylesheet">
 </head>
-<body>
-$END$
+<body th:replace="index::login-register">
 </body>
+
+<script type="text/javascript">
+
+     var a = document.getElementsByClassName("h3 mb-3 font-weight-normal")[0].innerHTML;
+     if(a=='请登录'){
+         document.getElementsByClassName("h3 mb-3 font-weight-normal")[0].innerHTML='请注册'
+     }else{
+         document.getElementsByClassName("h3 mb-3 font-weight-normal")[0].innerHTML='please register it'
+     }
+     var china=document.getElementById("china");
+     var english=document.getElementById("english");
+     china.href="register.html?l=zh_CN";
+     english.href="register.html?l=en_US";
+     var text = document.getElementById("sign").innerText;
+     if(text=='登陆'){
+         document.getElementById("sign").innerText='注册'
+     }else{
+         document.getElementById("sign").innerText='register'
+     }
+     document.getElementsByClassName("form-signin")[0].action="/user/register";
+</script>
 </html>

@@ -1,9 +1,8 @@
-package com.ligong.util;
+package com.blog.springboot.util;
 
 import java.security.MessageDigest;
-import java.security.spec.*;
+import org.junit.Test;
 
-import org.junit.Test; 
 public class MD5_util {
 	public final static String MD5(String s) {
 		char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };

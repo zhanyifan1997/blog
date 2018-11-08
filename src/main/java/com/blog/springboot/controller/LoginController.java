@@ -2,22 +2,22 @@ package com.blog.springboot.controller;
 
 import com.blog.springboot.bean.User;
 import com.blog.springboot.service.UserService;
+import com.blog.springboot.util.MD5_util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
 import java.net.URLEncoder;
-import java.util.Map;
 
 /**
  * @author 詹奕凡
- * 处理登陆请求
+ * 处理登陆请求,注册请求
  */
 @Controller
 public class LoginController{
@@ -38,7 +38,7 @@ public class LoginController{
         HttpSession session = request.getSession();
 //        String interceptorUrl = (String) request.getAttribute("interceptorUrl");
 //        System.out.println(interceptorUrl);
-        User user = new User(username, password);
+        User user = new User(username, MD5_util.MD5(password));
         user=service.checkUser(user);
 //        System.out.println(user);
         if(user!=null){
@@ -47,5 +47,23 @@ public class LoginController{
         }else{
             return "index";
         }
+    }
+
+    /**
+     * 处理用户注册请求
+     * @param username
+     * @param password
+     * @param model
+     * @return
+     */
+    @RequestMapping("/user/register")
+    @ResponseBody
+    public String register(String username, String password, Model model){
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(MD5_util.MD5(password));
+        service.registerUser(user);
+        model.addAttribute("url","index.html");
+        return "<h1>注册成功！</h1><br><a href='http://localhost:8080/index.html'>返回登陆</a>";
     }
 }
